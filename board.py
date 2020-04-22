@@ -12,6 +12,7 @@ class Board:
             self.direction = 0
             self.x = start_pos[0]
             self.y = start_pos[1]
+            self.start_pos = start_pos
             
 
 
@@ -33,6 +34,10 @@ class Board:
                   self.direction = 0
             else:
                   self.y += self.speed * self.direction
+
+      def take_start_pos(self):
+            self.x = self.start_pos[0]
+            self.y = self.start_pos[1]
                   
 
 class ComputerBoard(Board):
@@ -51,6 +56,11 @@ class ComputerBoard(Board):
                   self.direction = -1
 
             self.y += self.speed * self.direction
+
+      def take_start_pos(self):
+            self.x = self.start_pos[0] + SCREEN_SIZE[0] - BOARD_SIZE_X
+            self.y = self.start_pos[1]
+      
                   
             
             
