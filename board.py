@@ -15,7 +15,6 @@ class Board:
             self.start_pos = start_pos
             
 
-
       def show(self, size_x, size_y):
             """ drawing board on screen
 
@@ -28,6 +27,13 @@ class Board:
             board
 
             """
+            mouse_pos = pygame.mouse.get_pos()[1]
+            if self.y - mouse_pos >= 0:
+                  self.direction = -1
+            elif self.y - mouse_pos <= -1 * BOARD_SIZE_Y:
+                  self.direction = 1
+            else:
+                  self.direction = 0
             if self.y < 0 and self.direction == -1:
                   self.direction = 0
             elif self.y > SCREEN_SIZE[1] - BOARD_SIZE_Y and self.direction == 1:

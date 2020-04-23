@@ -14,8 +14,11 @@ def main():
       game = Game(screen)
       while True:
             clock.tick(FPS)
-            game.game_event()
-            game.screen_update()
+            if game.play:
+                  game.game_event()
+                  game.screen_update()
+            else:
+                  pass
 
 
 if __name__ == "__main__":

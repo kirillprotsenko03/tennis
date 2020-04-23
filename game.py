@@ -19,6 +19,9 @@ class Game:
             self.cube = Cube(screen, CUBE_START_POS, RED)
             self.comp = ComputerBoard(screen, BOARD_START_POS, RED, self.cube)
             self.score = Score()
+            self.play = True
+
+
 
       def screen_update(self):
             """ show all elements of game
@@ -28,6 +31,7 @@ class Game:
             self.you.show(BOARD_SIZE_X, BOARD_SIZE_Y)
             self.comp.show(BOARD_SIZE_X, BOARD_SIZE_Y)
             self.cube.show(CUBE_SIZE, CUBE_SIZE)
+            self.score.show(self.screen)
             pygame.display.update()
             
 
@@ -41,21 +45,6 @@ class Game:
                   if event.type == pygame.QUIT:
                         sys.exit()
 
-                  if event.type == pygame.KEYDOWN:
-                        if event.key == pygame.K_DOWN:
-                              self.you.direction = 1
-                        if event.key == pygame.K_UP:
-                              self.you.direction = -1
-                  if event.type == pygame.KEYUP:
-                        if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
-                              self.you.direction = 0
-                  if event.type == pygame.MOUSEMOTION:
-                        if self.you.y - event.pos[1] >= 0:
-                              self.you.direction = -1
-                        elif self.you.y - event.pos[1] <= -1 * BOARD_SIZE_Y:
-                              self.you.direction = 1
-                        else:
-                              self.you.direction = 0
             self.you.move()
             continuetion = self.cube.move(self.you.y, self.comp.y, self.score)
             self.comp.move(self.cube.y)
@@ -63,9 +52,8 @@ class Game:
                   self.cube.take_start_pos()
                   self.comp.take_start_pos()
                   self.you.take_start_pos()
-                  print('you:', self.score.you_score)
-                  print('comp:', self.score.comp_score)
                   time.sleep(2)
+
             
       
             
