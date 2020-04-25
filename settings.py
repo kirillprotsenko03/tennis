@@ -21,6 +21,11 @@ SCORE_FONT_SIZE = 25
 SCORE_POS = (SCREEN_SIZE[0] // 2 - 70, SCREEN_SIZE[1] // 15)  # 70 - half of size text in px if font_size = 25
 
 
+BUTTON_SIZE_Y = 40
+BUTTON_SIZE_X = 100
+
+
+
 # COLORS IN RGB
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)

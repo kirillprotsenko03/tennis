@@ -28,9 +28,9 @@ class Board:
 
             """
             mouse_pos = pygame.mouse.get_pos()[1]
-            if self.y - mouse_pos >= 0:
+            if self.y - mouse_pos > 0:
                   self.direction = -1
-            elif self.y - mouse_pos <= -1 * BOARD_SIZE_Y:
+            elif self.y - mouse_pos < -1 * BOARD_SIZE_Y:
                   self.direction = 1
             else:
                   self.direction = 0
@@ -52,10 +52,12 @@ class ComputerBoard(Board):
             self.x += SCREEN_SIZE[0] - BOARD_SIZE_X
 
       def move(self, cube_y):
-            if self.y + BOARD_SIZE_Y // 2 > cube_y - CUBE_SIZE:
+            if self.y + BOARD_SIZE_Y // 2 > cube_y:  # go up
                   self.direction = -1
-            if self.y + BOARD_SIZE_Y // 2 <= cube_y + CUBE_SIZE:
+            if self.y + BOARD_SIZE_Y // 2 <= cube_y:  # go down
                   self.direction = 1
+            
+      
             if self.y < 0 and self.direction == -1:
                   self.direction = 1
             if self.y > SCREEN_SIZE[1] - BOARD_SIZE_Y and self.direction == 1:

@@ -44,6 +44,9 @@ class Game:
             for event in pygame.event.get():
                   if event.type == pygame.QUIT:
                         sys.exit()
+                  if event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_SPACE:
+                              self.play = False
 
             self.you.move()
             continuetion = self.cube.move(self.you.y, self.comp.y, self.score)
